@@ -75,10 +75,9 @@ spec:
         #   initialDelaySeconds: 120
         readinessProbe:
           httpGet:
-            host: localhost
             path: /knowage/restful-services/version
             port: 8080
-          initialDelaySeconds: 120
+          initialDelaySeconds: 10
         ports:
           - name: main
             containerPort: 8080
