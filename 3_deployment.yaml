@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: knowage
-        image: knowagelabs/knowage-server-docker:7.3.0-SNAPSHOT
+        image: knowagelabs/knowage-server-docker:7.4.0-SNAPSHOT
         env:
           - name: DB_USER
             valueFrom:
@@ -70,15 +70,15 @@ spec:
         # livenessProbe:
         #   httpGet:
         #     host: localhost
-        #     path: /knowage
+        #     path: /knowage/restful-services/version
         #     port: 8080
         #   initialDelaySeconds: 120
-        # readinessProbe:
-        #   httpGet:
-        #     host: localhost
-        #     path: /knowage
-        #     port: 8080
-        #   initialDelaySeconds: 120
+        readinessProbe:
+          httpGet:
+            host: localhost
+            path: /knowage/restful-services/version
+            port: 8080
+          initialDelaySeconds: 120
         ports:
           - name: main
             containerPort: 8080
